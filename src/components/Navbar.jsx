@@ -1,19 +1,38 @@
 import { Link } from "react-router-dom";
 
-export const Navbar = () => {
+const Navbar = () => {
+    return (
+        <nav className="navbar navbar-dark bg-black px-4 border-bottom border-secondary">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="#">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg"
+                        alt="Star Wars Logo"
+                        width="120"
+                    />
+                </a>
 
-	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-	);
-};
+                <div className="dropdown">
+                    <button
+                        className="btn btn-warning dropdown-toggle fw-semibold"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Favoritos
+                    </button>
+
+                    <ul className="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <span className="dropdown-item text-muted">
+                                Sin favoritos
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    )
+}
+
+export default Navbar

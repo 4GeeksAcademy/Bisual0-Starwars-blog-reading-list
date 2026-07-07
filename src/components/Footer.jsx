@@ -1,11 +1,15 @@
-export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
-		<p>
-			Check the <a target="_blank" href="https://4geeks.com/docs/start/start-react-advanced">template documentation</a> <i className="fa-solid fa-file"></i> for help.
-		</p>
-		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
-		</p>
-	</footer>
-);
+import React from "react"
+
+const Footer = () => {
+    return (
+        <footer className="bg-black text-center py-4 border-top border-secondary">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg"
+                alt="Star Wars Logo"
+                width="110"
+            />
+        </footer>
+    )
+}
+
+export default Footer
