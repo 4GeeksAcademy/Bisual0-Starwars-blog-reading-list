@@ -6,11 +6,11 @@ const CharacterPage = () => {
   const API_KEY = "https://www.swapi.tech/api/people"
   const { id } = useParams()
 
-  const [character, setCharacter] = useState({})
-  const [planet, setPlanet] = useState("")
-  const [vehicles, setVehicles] = useState([])
-  const [starships, setStarships] = useState([])
-  const [films, setFilms] = useState([])
+  const [character, setCharacter] = useState(null)
+  const [planet, setPlanet] = useState(null)
+  const [vehicles, setVehicles] = useState(null)
+  const [starships, setStarships] = useState(null)
+  const [films, setFilms] = useState(null)
 
   const getCharacterInfo = async () => {
     try {
@@ -66,13 +66,20 @@ const CharacterPage = () => {
     }
   }
 
+
   useEffect(() => {
     getCharacterInfo()
   }, [id])
 
-  if (!character) {
-    return <p className="text-white">Cargando...</p>;
-  }
+  if (!character || !planet || !vehicles || !starships || !films) {
+  return (
+    <main className="bg-black text-white min-vh-100 py-5">
+      <div className="container">
+        <p>Cargando personaje...</p>
+      </div>
+    </main>
+  )
+}
 
   return (
     <main className="bg-black text-white min-vh-100 py-5">
@@ -121,7 +128,7 @@ const CharacterPage = () => {
             <img
               src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/people/${id}.jpg`}
               alt={character.name}
-              className="img-fluid rounded shadow"
+              className="img-fluid shadow border"
               style={{ maxHeight: "500px" }}
             />
           </div>

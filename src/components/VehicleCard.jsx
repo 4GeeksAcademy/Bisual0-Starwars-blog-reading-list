@@ -1,28 +1,22 @@
-import React, { useEffect } from 'react';
-import useGlobalReducer from '../hooks/useGlobalReducer';
+import React from "react";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 import { Link } from "react-router-dom";
 
-const CharacterCard = ({ personaje, index }) => {
-    const API_KEY = "https://www.swapi.tech/api/people"
+const VehicleCard = ({ vehiculo }) => {
     const { store, dispatch } = useGlobalReducer()
 
-    const estaEnFavoritos = store.favoritos.includes(personaje.name);
+    const estaEnFavoritos = store.favoritos.includes(vehiculo.name)
 
     return (
         <div className="card bg-dark text-white border-secondary" style={{ width: "18rem" }}>
-            <img
-                src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/refs/heads/master/public/images/people/${personaje.uid}.jpg`}
-                className="card-img-top rounded"
-                alt={personaje.name}
-                style={{}}
-            />
+            <div className="card-body d-flex flex-column justify-content-between" style={{ minHeight: "180px" }}>
+                <h3 className="card-title text-warning">
+                    {vehiculo.name}
+                </h3>
 
-            <div className="card-body">
-                <p className="card-title fs-4">{personaje.name}</p>
-
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex justify-content-between align-items-center mt-4">
                     <Link
-                        to={`/characters/${personaje.uid}`}
+                        to={`/vehicles/${vehiculo.uid}`}
                         className="btn btn-outline-warning"
                     >
                         Ver más...
@@ -33,7 +27,7 @@ const CharacterCard = ({ personaje, index }) => {
                         onClick={() => {
                             dispatch({
                                 type: "toggle_favorite",
-                                payload: personaje.name
+                                payload: vehiculo.name
                             });
                         }}
                     >
@@ -45,4 +39,4 @@ const CharacterCard = ({ personaje, index }) => {
     )
 }
 
-export default CharacterCard
+export default VehicleCard;
